@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    #menu-bar-container
+{
+background-color:#658BFF;
+height:70px;
+border-top:1px #cccccc solid;
+}
+
+#menu-bar
+{
+width:1000px;
+margin:0 auto;
+}
+
+h1
+{
+padding:0;
+margin:0;
+color:white;
+font-size:40px;
+font-weight:normal;
+font-color:white;
+padding-top:10px;
+padding-left:30%;
+}
+p
+{
+ padding:0;
+margin:0;
+color:white;
+font-size:20px;
+font-weight:normal;
+font-color:white;
+padding-top:10px;
+padding-left:30%;
+}
+h2
+{
+ 
+ padding:0;
+margin:0;
+color:white;
+font-size:20px;
+font-weight:normal;
+font-color:white;
+padding-top:10px;
+padding-left:30%;
+
+}
+label{
+  color:black;
+  font-size:20px;
+}
+
+
+form
+{
+padding-top:40px;
+padding-left:500px;
+}
+
+body
+{
+background-image: url('bg.jpg');
+background-size:cover;
+}
+
+.input1
+{
+padding-left:20px;
+padding-top:10px;
+}
+
+#inp
+{
+text-align:center;
+}
+
+
+.textInput {
+  border: none;
+  height: 28px;
+  margin: 2px;
+  border: 1px solid #6B7363;
+  font-size: 1.5em;
+  padding: 5px;
+  width: 35%;
+}
+.textInput:focus {
+  outline: none;
+}
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px;
+  margin: 8px 0;
+  width: 20%;
+  opacity: 0.9;
+}
+
+#message p {
+  padding: 20px 50px;
+  font-size: 20px;
+}
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "✔";
+}
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "✖";
+}
+
+#message {
+  display:none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+
+</style>
+</head>
+<body>
+ 
+  <div id="menu-bar-container">
+<div id="menu-bar"><h1>SEARCH FOR HEALTH CARE</h1></div>
+</div>
+
+  <h2>Register</h2>
+    <p>Please fill in this form to create an User account.</p>
+    <hr>
+   <form method="POST" action="User_Registration_Servlet" onsubmit="return Validate()" name="vform" >
+    <div id="firstname_div">
+     <label>First Name</label> <br>
+     <input type="text" name="firstname" class="textInput">
+     <div id="fname_error"></div>
+    </div>
+    <div id="lastname_div">
+     <label>Last Name</label> <br>
+     <input type="text" name="lastname" class="textInput">
+     <div id="lastname_error"></div>
+    </div>
+    <div id="age_div">
+      <label>Age</label> <br>
+      <input type="number" name="age" class="textInput">
+      <div id="age_error">
+    </div>
+     <div id="gender_div">
+      <label>Gender</label> <br>
+      <input type="radio" name="gender" value="male"> Male
+      <input type="radio" name="gender" value="female"> Female
+      <input type="radio" name="gender" value="other"> Other
+      <div id="gender_error">
+    </div>
+    <div id="contactnumber_div">
+      <label>Contact Number</label> <br>
+      <input type="number" name="contactnumber" class="textInput" pattern="/(7|8|9)\d{9}/" title="Must contain 10 digits">
+      <div id="contactnumber_error">
+    </div>
+    <div id="adminid_div">
+      <label>User ID</label> <br>
+      <input type="text" name="adminid" class="textInput">
+      <div id="adminid_error"></div>
+    </div>
+    <div id="password_div">
+      <label>Password</label> <br>
+      <input type="password" id="psw" name="psw" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="textInput">
+      <div id="password_error"></div>
+    </div>
+    <div>
+    <input type="submit" name="register" value="Register" class="btn">
+    </div>
+   </form>
+  </div>
+  <div id="message">
+  <h5>Password must contain the following:</h5>
+  <h5 id="letter" class="invalid">A <b>lowercase</b> letter</h5>
+  <h5 id="capital" class="invalid">A <b>capital (uppercase)</b> letter</h5>
+  <h5 id="number" class="invalid">A <b>number</b></h5>
+  <h5 id="length" class="invalid">Minimum <b>8 characters</b></h5></center>
+</div>
+</body>
+</html>
+<script>
+  var firstname = document.forms['vform']['firstname'];
+  var lastname = document.forms['vform']['lastname'];
+  var age = document.forms['vform']['age'];
+  var contactnumber = document.forms['vform']['contactnumber'];
+  var adminid = document.forms['vform']['adminid'];
+  var password = document.forms['vform']['password'];
+
+ 
+
+
+  var fname_error = document.getElementById('fname_error');
+  var lastname_error = document.getElementById('lastname_error');
+  var age_error = document.getElementById('age_error');
+  var contactnumber_error = document.getElementById('contactnumber_error');
+  var adminid_error = document.getElementById('adminid_error');
+  var password_error = document.getElementById('password_error');
+ 
+ 
+  function Validate() {
+  // validate username
+  if (firstname.value == "") {
+    firstname.style.border = "1px solid red";
+    document.getElementById('firstname_div').style.color = "red";
+    fname_error.textContent = "firstname is required";
+    firstname.focus();
+    return false;
+  }
+  if (lastname.value == "") {
+    lastname.style.border = "1px solid red";
+    document.getElementById('lastname_div').style.color = "red";
+    lastname_error.textContent = "lastname is required";
+    lastname.focus();
+    return false;
+  }
+  if (age.value == "") {
+    age.style.border = "1px solid red";
+    document.getElementById('age_div').style.color = "red";
+    age_error.textContent = "Age is required";
+    age.focus();
+    return false;
+  }
+
+  if (contactnumber.value == "") {
+    contactnumber.style.border = "1px solid red";
+    document.getElementById('contactnumber_div').style.color = "red";
+    contactnumber_error.textContent = "contactnumber is required";
+    contactnumber.focus();
+    return false;
+  }
+
+  if (adminid.value == "") {
+    adminid.style.border = "1px solid red";
+    document.getElementById('adminid_div').style.color = "red";
+    adminid_error.textContent = "Admin ID is required";
+    adminid.focus();
+    return false;
+  }
+
+  if (password.value == "") {
+    password.style.border = "1px solid red";
+    document.getElementById('password_div').style.color = "red";
+    password_error.textContent = "password is required";
+    password.focus();
+    return false;
+  }
+}
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+ 
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+ 
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+</script>

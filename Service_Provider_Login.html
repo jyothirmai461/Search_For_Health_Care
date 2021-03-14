@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<style>
+			#menu-bar-container
+			{
+				background-color:#658BFF;
+				height:70px;
+				border-top:1px #cccccc solid;
+			}
+
+			#menu-bar
+			{
+				width:1000px;
+				margin:0 auto;
+			}
+
+			h1
+			{
+				padding:0;
+				margin:0;
+				color:white;
+				font-size:40px;
+				font-weight:normal;
+				font-color:white;
+				padding-top:10px;
+				padding-left:30%;
+			}
+
+			form
+			{
+				padding-top:40px;
+				padding-left:500px;
+			}
+
+			body
+			{
+				background-image: url('bg.jpg');
+				background-size:cover;
+			}
+
+			.input1
+			{
+				padding-left:10px;
+				padding-top:10px;
+			}
+
+			#inp
+			{
+				text-align:center;
+			}
+
+		</style>
+		<title>Service Provider Login Form</title>
+	</head>
+
+	<body>
+		<div id="menu-bar-container">
+		<div id="menu-bar"><h1>SEARCH FOR HEALTH CARE</h1></div>
+		</div>
+		<form name="serviceproviderloginform" method="post" action="Service_Provider_Login_Servlet">
+
+			<font color="black">Service Provider Id : </font>
+			<input type="text" class="input1" name="username"/><br>
+			<br>
+	
+			<font color="black">Password &nbsp;: </font>
+			<input type="password" class="input1" name="password"/><br>
+			<br>
+
+			<input type="submit" id="inp" value="Login"/>
+
+		</form>
+
+	</body>
+
+</html>

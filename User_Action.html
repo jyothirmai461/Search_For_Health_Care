@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<style>
+			#menu-bar-container
+			{
+				background-color:#658BFF;
+				height:70px;
+				border-top:1px #cccccc solid;
+			}
+
+			#menu-bar
+			{
+				width:1000px;
+				margin:0 auto;
+			}
+
+			h1
+			{
+				padding:0;
+				margin:0;
+				color:white;
+				font-size:40px;
+				font-weight:normal;
+				font-color:white;
+				padding-top:10px;
+				padding-left:30%;
+			}
+
+			form
+			{
+				padding-top:40px;
+			}
+
+			body
+			{
+				background-image: url('bg.jpg');
+				background-size:cover;
+			}
+
+		</style>
+		<title>User Action</title>
+
+	</head>
+
+	<body>
+		<div id="menu-bar-container">
+		<div id="menu-bar"><h1>SEARCH FOR HEALTH CARE</h1></div>
+		</div>
+		<form name="searchandfilter" method="post" action="User_Action_Servlet">
+			<font color="black" style="padding-left:200px;">Location : </font>
+			<select id="location" name="location">
+				<option value="Hyderabad">Hyderabad</option>
+  				<option value="Guntur">Guntur</option>
+  				<option value="Vijayawada">Vijayawada</option>
+			</select><br><br>
+			<font color="black" style="padding-left:100px;">Hospital Type:</font>
+			<select id="hospitaltype" name="hospitaltype">
+				<option value="Cancer">Cancer</option>
+  				<option value="Multispeciality">Multispeciality</option>
+  				<option value="Dental">Cardiocare</option>
+			</select><br><br>
+
+			<font color="black" style="padding-left:100px;">Ambulance Availability:</font>
+			<select id="ambulanceavailability" name="ambulanceavailability">
+  				<option value="yes">yes</option>
+  				<option value="no">no</option>
+			</select>
+			<br><br>
+			<center>
+			<input type="submit" class="st" value="Submit"/>
+			</center>
+		</form>
+		
+	</body>
+
+</html>
